@@ -178,7 +178,46 @@ The scripts implement logging from the python standard library.
 
 ## Experiments
 All experiments are configured with [Hydra](https://hydra.cc/). Experiment configs are
-stored in `config/`
+stored in `config/`. 
+
+### Preparing the data
+You need to obtain the MultiTACRED dataset from [this URL](https://ldc.upenn.edu/TODO), 
+and unzip it into the `./data` folder.
+You also need to download the original, [English TACRED dataset](https://catalog.ldc.upenn.edu/LDC2018T24),
+and place the content of its `data/json` folder in `./data/en` 
+
+The file structure should look like this:
+```bash
+data
+  |-- ar/
+       |--- train_ar.json
+       |--- dev_ar.json
+       |--- test_ar.json
+       |--- test_en_ar_bt.json
+  |-- de
+       |--- ...
+  |-- en
+       |--- train.json
+       |--- dev.json
+       |--- test.json
+  |...
+```
+
+To reproduce our results, you should apply the [TACRED Revisited](https://github.com/DFKI-NLP/tacrev) patch to
+the English TACRED json files. Note that the translated data is already patched.
+```bash
+git clone https://github.com/DFKI-NLP/tacrev
+
+python tacrev/scripts/apply_tacred_patch.py \
+  --dataset-file TACRED/data/json/dev.json \
+  --patch-file tacrev/patch/dev_patch.json \
+  --output-file MultiTACRED/data/dev.json
+
+python tacrev/scripts/apply_tacred_patch.py \
+  --dataset-file TACRED/data/json/test.json \
+  --patch-file tacrev/patch/test_patch.json \
+  --output-file MultiTACRED/data/test.json
+```
 
 ### Train and evaluate a single scenario
 ```bash
