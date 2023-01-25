@@ -1,0 +1,11 @@
+# @package _global_
+scenario_name: cross_language/en
+model_name_or_path: bert-base-multilingual-cased
+data_dir: ./data
+train_file: en/train.json
+dev_file: en/dev.json
+test_file: en/test.json
+learning_rate: 1e-5
+
+defaults:
+  - _self_

@@ -1,0 +1,5 @@
+# @package _global_
+additional_train_dev_files_sample_size: ??
+cache_dir: ./.cache/binary_relation_clf/${scenario_name}/${additional_train_dev_files_sample_size}/${run_id}/
+output_dir: ./experiments/binary_relation_clf/${scenario_name}/${additional_train_dev_files_sample_size}/${run_id}/
+predictions_exp_name: "${scenario_name}/${additional_train_dev_files_sample_size}/${run_id}"

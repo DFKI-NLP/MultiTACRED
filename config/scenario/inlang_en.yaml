@@ -1,0 +1,9 @@
+# @package _global_
+scenario_name: in_language/en
+model_name_or_path: bert-base-uncased
+do_lower_case: true
+data_dir: ./data/en/
+train_file: train.json
+dev_file: dev.json
+test_file: test.json
+learning_rate: 3e-5

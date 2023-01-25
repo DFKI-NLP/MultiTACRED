@@ -1,0 +1,8 @@
+# @package _global_
+scenario_name: in_language/ar
+model_name_or_path: aubmindlab/bert-base-arabertv02
+data_dir: ./data/ar/
+train_file: train_ar.json
+dev_file: dev_ar.json
+test_file: test_ar.json
+learning_rate: 1e-5

@@ -1,0 +1,11 @@
+# @package _global_
+scenario_name: backtranslation/es
+test_file: es/test_en_es_bt.json
+do_train: false
+do_eval: false
+evaluate_during_training: false
+eval_all_checkpoints: false
+model_name_or_path: ./experiments/binary_relation_clf/in_language/en/${run_id}
+
+defaults:
+  - inlang_en

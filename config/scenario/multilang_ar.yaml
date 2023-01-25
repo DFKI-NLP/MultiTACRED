@@ -1,0 +1,10 @@
+# @package _global_
+scenario_name: multi_language/ar
+additional_train_files: ar/train_ar.json
+additional_dev_files: ar/dev_ar.json
+additional_train_dev_files_sample_size: 0.1
+additional_train_dev_files_use_stratified_sampling: true
+test_file: ar/test_ar.json
+
+defaults:
+  - crosslang_en

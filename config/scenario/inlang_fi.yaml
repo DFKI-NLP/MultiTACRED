@@ -1,0 +1,8 @@
+# @package _global_
+scenario_name: in_language/fi
+model_name_or_path: TurkuNLP/bert-base-finnish-cased-v1
+data_dir: ./data/fi/
+train_file: train_fi.json
+dev_file: dev_fi.json
+test_file: test_fi.json
+learning_rate: 7e-6

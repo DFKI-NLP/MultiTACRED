@@ -1,0 +1,8 @@
+# @package _global_
+scenario_name: in_language/ru
+model_name_or_path: sberbank-ai/ruBert-base
+data_dir: ./data/ru/
+train_file: train_ru.json
+dev_file: dev_ru.json
+test_file: test_ru.json
+learning_rate: 3e-5

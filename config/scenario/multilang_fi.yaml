@@ -1,0 +1,10 @@
+# @package _global_
+scenario_name: multi_language/fi
+additional_train_files: fi/train_fi.json
+additional_dev_files: fi/dev_fi.json
+additional_train_dev_files_sample_size: 0.1
+additional_train_dev_files_use_stratified_sampling: true
+test_file: fi/test_fi.json
+
+defaults:
+  - crosslang_en

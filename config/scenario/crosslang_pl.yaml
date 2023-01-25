@@ -1,0 +1,6 @@
+# @package _global_
+scenario_name: cross_language/pl
+test_file: pl/test_pl.json
+
+defaults:
+  - crosslang_en

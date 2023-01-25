@@ -1,0 +1,8 @@
+# @package _global_
+scenario_name: in_language/ja
+model_name_or_path: cl-tohoku/bert-base-japanese-whole-word-masking
+data_dir: ./data/ja/
+train_file: train_ja.json
+dev_file: dev_ja.json
+test_file: test_ja.json
+learning_rate: 3e-5

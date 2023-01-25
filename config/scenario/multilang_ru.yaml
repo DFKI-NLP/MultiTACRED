@@ -1,0 +1,10 @@
+# @package _global_
+scenario_name: multi_language/ru
+additional_train_files: ru/train_ru.json
+additional_dev_files: ru/dev_ru.json
+additional_train_dev_files_sample_size: 0.1
+additional_train_dev_files_use_stratified_sampling: true
+test_file: ru/test_ru.json
+
+defaults:
+  - crosslang_en

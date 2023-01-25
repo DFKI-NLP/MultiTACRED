@@ -1,0 +1,12 @@
+# @package _global_
+scenario_name: in_language/hi
+#model_name_or_path: neuralspace-reverie/indic-transformers-hi-bert
+#model_name_or_path: l3cube-pune/hindi-bert-v2
+#model_name_or_path: ai4bharat/indic-bert
+#model_name_or_path: google/muril-base-cased
+model_name_or_path: l3cube-pune/hindi-bert-scratch
+data_dir: ./data/hi/
+train_file: train_hi.json
+dev_file: dev_hi.json
+test_file: test_hi.json
+learning_rate: 7e-6

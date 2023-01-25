@@ -1,0 +1,4 @@
+# @package _global_
+cache_dir: ./.cache/binary_relation_clf_lr/${scenario_name}/${learning_rate}/
+output_dir: ./experiments/binary_relation_clf_lr/${scenario_name}/${learning_rate}/
+predictions_exp_name: "${scenario_name}/${learning_rate}"

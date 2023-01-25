@@ -1,0 +1,8 @@
+# @package _global_
+scenario_name: in_language/fr
+model_name_or_path: flaubert/flaubert_base_cased
+data_dir: ./data/fr/
+train_file: train_fr.json
+dev_file: dev_fr.json
+test_file: test_fr.json
+learning_rate: 1e-5

@@ -1,0 +1,8 @@
+# @package _global_
+scenario_name: in_language/tr
+model_name_or_path: dbmdz/bert-base-turkish-cased
+data_dir: ./data/tr/
+train_file: train_tr.json
+dev_file: dev_tr.json
+test_file: test_tr.json
+learning_rate: 1e-5

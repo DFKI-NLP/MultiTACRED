@@ -1,0 +1,28 @@
+run_id: 1
+seed: 1337
+
+cache_dir: ./.cache/binary_relation_clf/${scenario_name}/${run_id}
+overwrite_cache: true
+overwrite_output_dir: true
+predictions_exp_name: "${scenario_name}/${run_id}"
+output_dir: ./experiments/binary_relation_clf/${scenario_name}/${run_id}
+
+model_type: bert
+do_train: true
+do_eval: true
+do_predict: true
+evaluate_during_training: true
+eval_all_checkpoints: true
+save_steps: 8500
+logging_steps: 8500
+max_seq_length: 128
+per_gpu_eval_batch_size: 8
+per_gpu_train_batch_size: 8
+learning_rate: 2e-5
+num_train_epochs: 5.0
+entity_handling: mark_entity_append_ner
+dataset_reader: tacred
+
+defaults:
+  - _self_
+  - scenario: inlang_en

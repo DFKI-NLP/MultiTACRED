@@ -1,0 +1,8 @@
+# @package _global_
+scenario_name: in_language/de
+model_name_or_path: bert-base-german-cased
+data_dir: ./data/de/
+train_file: train_de.json
+dev_file: dev_de.json
+test_file: test_de.json
+learning_rate: 3e-5

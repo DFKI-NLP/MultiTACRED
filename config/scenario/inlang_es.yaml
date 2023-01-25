@@ -1,0 +1,8 @@
+# @package _global_
+scenario_name: in_language/es
+model_name_or_path: dccuchile/bert-base-spanish-wwm-cased
+data_dir: ./data/es/
+train_file: train_es.json
+dev_file: dev_es.json
+test_file: test_es.json
+learning_rate: 1e-5

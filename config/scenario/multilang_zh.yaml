@@ -1,0 +1,10 @@
+# @package _global_
+scenario_name: multi_language/zh
+additional_train_files: zh/train_zh.json
+additional_dev_files: zh/dev_zh.json
+additional_train_dev_files_sample_size: 0.1
+additional_train_dev_files_use_stratified_sampling: true
+test_file: zh/test_zh.json
+
+defaults:
+  - crosslang_en

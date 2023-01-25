@@ -1,0 +1,8 @@
+# @package _global_
+scenario_name: in_language/pl
+model_name_or_path: dkleczek/bert-base-polish-cased-v1
+data_dir: ./data/pl/
+train_file: train_pl.json
+dev_file: dev_pl.json
+test_file: test_pl.json
+learning_rate: 7e-6

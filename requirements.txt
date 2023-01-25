@@ -1,0 +1,18 @@
+# --------- multi-tacred --------- #
+google-cloud-translate==2.0.1   # Translation with Google
+spacy==3.1.6                    # Tokenization
+trankit==1.1.1                  # Tokenization for more languages
+git+https://github.com/DFKI-NLP/sherlock.git@wip_0.2.1#egg=sherlock     # Relation classification with AllenNLP/Transformers
+torch==1.10.2                   # Fix Torch version for Sherlock
+
+# --------- hydra --------- #
+hydra-core==1.2.0
+
+# --------- linters --------- #
+pre-commit      # hooks for applying linters on commit
+flake8          # code analysis
+black==22.6.0   # fix dependency conflicts
+typer==0.4.2    # fix dependency conflicts
+
+# --------- others --------- #
+python-dotenv>=0.20.0   # loading env variables from .env file

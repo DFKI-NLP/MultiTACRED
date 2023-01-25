@@ -1,0 +1,8 @@
+# @package _global_
+scenario_name: in_language/zh
+model_name_or_path: bert-base-chinese
+data_dir: ./data/zh/
+train_file: train_zh.json
+dev_file: dev_zh.json
+test_file: test_zh.json
+learning_rate: 1e-5
