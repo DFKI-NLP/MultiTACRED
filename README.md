@@ -64,7 +64,7 @@ the logger creates warnings for any such example.
 
 The scripts skip translation for all examples that are in `[output_file.jsonl]`
 and `[output_file.jsonl].manual` to avoid costly unnecessary translation. Set `--overwrite` to
-not re-translate those examples.
+re-translate those examples.
 
 
 #### DeepL
