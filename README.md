@@ -242,7 +242,7 @@ python src/evaluate/evaluate.py "scenario=inlang_de"
 
 ### Train and evaluate a single scenario, with different random seeds
 ```bash
-python src/evaluate/evaluate.py "run_id=range(1,6)" "scenario=inlang_de"
+python src/evaluate/evaluate.py "run_id=range(1,6)" "scenario=inlang_de" -m
 ```
 
 ### Train and evaluate all in-language and cross-language scenarios
