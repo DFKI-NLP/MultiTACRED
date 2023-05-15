@@ -270,7 +270,7 @@ Please consider citing the following paper when using MultiTACRED:
 ```
 
 ## 📘&nbsp; Licence
-TranslateRE is released under the terms of the [MIT License](LICENCE).
+MultiTACRED is released under the terms of the [MIT License](LICENCE).
 
 ## References
 1. [Position-aware Attention and Supervised Data Improve Slot Filling](https://nlp.stanford.edu/pubs/zhang2017tacred.pdf). Yuhao Zhang, Victor Zhong, Danqi Chen, Gabor Angeli, and Christopher D. Manning.
