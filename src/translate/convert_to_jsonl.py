@@ -43,11 +43,13 @@ class DatasetConverter:
         )
         self.output_dev_file = os.path.join(output_dir, "dev.jsonl" if language is None else f"dev_{language}.jsonl")
 
-        if self.input_test_backtranslation_file is not None and not os.path.exists(self.input_test_backtranslation_file):
-            print(f"Test Backtranslation file not found: {self.input_test_backtranslation_file}")
-            self.output_test_backtranslation_file = None
-        else:
+        if self.input_test_backtranslation_file is not None:
+            assert os.path.exists(self.input_test_backtranslation_file), "Backtranslation file not found: {}".format(
+                self.input_test_backtranslation_file
+            )
             self.output_test_backtranslation_file = os.path.join(output_dir, f"test_en_{language}_bt.json")
+        else:
+            self.output_test_backtranslation_file = None
 
 
         self.glove_mapping = {
