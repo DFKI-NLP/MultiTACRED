@@ -20,13 +20,13 @@ for SPLIT in 'train' 'dev' 'test'
 do
   echo 'Translating split: ' $SPLIT
   CUDA_VISIBLE_DEVICES=${GPU} python src/translate/translate_google.py -v --private_key ${PRIVATE_KEY} \
-  -i ${TACRED_PATH}/${SPLIT}.jsonl -o ${OUTPUT_DIR}/${TARGET_LANG_LC}/tacred_${SPLIT}_${TARGET_LANG_LC}.jsonl \
+  -i ${TACRED_PATH}/${SPLIT}.jsonl -o ${OUTPUT_DIR}/${TARGET_LANG_LC}/${SPLIT}_${TARGET_LANG_LC}.jsonl \
   -T ${TOKENIZER} -s ${SOURCE_LANG} -t ${TARGET_LANG} --max_characters ${MAX_CHARACTERS} \
   --log_file ${OUTPUT_DIR}/${TARGET_LANG_LC}/${SOURCE_LANG}-${TARGET_LANG}.log
 done
 echo 'Backtranslating Test split'
-CUDA_VISIBLE_DEVICES=${GPU} python src/translate/backtranslate.py $OUTPUT_DIR/${TARGET_LANG_LC}/tacred_test_${TARGET_LANG_LC}.jsonl \
-  ${OUTPUT_DIR}/${TARGET_LANG_LC}/tacred_test_en_${TARGET_LANG_LC}_bt.jsonl google \
+CUDA_VISIBLE_DEVICES=${GPU} python src/translate/backtranslate.py $OUTPUT_DIR/${TARGET_LANG_LC}/test_${TARGET_LANG_LC}.jsonl \
+  ${OUTPUT_DIR}/${TARGET_LANG_LC}/test_en_${TARGET_LANG_LC}_bt.jsonl google \
   -v --private_key ${PRIVATE_KEY} \
   -T spacy_en --max_characters ${MAX_CHARACTERS} \
   --log_file ${OUTPUT_DIR}/${TARGET_LANG_LC}/${SOURCE_LANG}-${TARGET_LANG}_backtranslation.log

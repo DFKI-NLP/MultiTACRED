@@ -70,14 +70,17 @@ re-translate those examples.
 #### DeepL
 The script [`translate_deepl.py`](translate_deepl.py) translates the dataset into the
 target language. You need a valid API key. The following example shows how to translate the
-first 1000 characters of `train.jsonl` to German:
+sample file `data/en/train_sample.jsonl` to German:
 
 ```bash
-python src/translate/translate_deepl.py --api_key [API_KEY] --api_address https://api.deepl.com/v2/translate
--i ./data/en/train.jsonl -o ./data/de/tacred_train_de.jsonl -T spacy_de -s EN -t DE
---log_file translate.log --max_characters 1000
+python src/translate/translate_deepl.py --api_key [API_KEY] --api_address "https://api.deepl.com/v2/translate"
+-i ./data/en/train_sample.jsonl -o ./data/de/train_de_deepl.jsonl -T spacy_de -s EN -t DE
+--log_file translate.log
 ```
-For testing purposes, you can also use the character-limited free API endpoint
+Your output should be similar to `data/de/train_de_sample.jsonl`. Note that the output file contains
+the original English tokens (field `tokens`) as well as the translated tokens (field `tokens_translated`) and the raw translation (field `translation_raw`).
+
+For testing purposes, you can use the character-limited free API endpoint
 [https://api-free.deepl.com/v2/translate](https://api-free.deepl.com/v2/translate) (but you still need an API key).
 
 Call `python src/translate/translate_deepl.py --help` for usage and argument information.
@@ -87,17 +90,16 @@ For a list of available languages use the flag `--show_languages`.
 #### Google
 
 The script [`translate_google.py`](translate_google.py) translates the dataset into the target
-language. You need a valid API key. The following example shows how to translate the
-first 1000 characters of `train.jsonl` to German:
+language. You need a valid API key. Follow this [setup guide](https://cloud.google.com/translate/docs/setup) and
+place the private key in a secure location.
+
+The following example shows how to translate the sample file `data/en/train_sample.jsonl` to German:
 
 ```bash
 python src/translate/translate_google.py --private_key [path/to/PRIVATE_KEY]
--i ./data/en/train.jsonl -o ./data/de/tacred_train_de.jsonl -T spacy_de -s EN -t DE
---log_file translate.log --max_characters 1000
+-i ./data/en/train_sample.jsonl -o ./data/de/train_de_google.jsonl -T spacy_de -s EN -t DE
+--log_file translate.log
 ```
-
-Follow this [setup guide](https://cloud.google.com/translate/docs/setup) and
-place the private key in a secure location.
 
 Call `python src/translate/translate_google.py --help` for usage and argument information.
 
@@ -110,9 +112,9 @@ For convenience, it is best to create a .env file of following content:
 INPUT_FILE='/path/to/dataset.jsonl'
 OUTPUT_FILE='dataset_translated.jsonl'
 # For DeepL
-API_KEY='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xx'
-API_ADDRESS='https://api.deepl.com/v2/translate'
-# or use: API_ADDRESS='https://api-free.deepl.com/v2/translate' (limited to 500K chars/month)
+API_KEY="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xx"
+API_ADDRESS="https://api.deepl.com/v2/translate"
+# or use: API_ADDRESS="https://api-free.deepl.com/v2/translate" (limited to 500K chars/month)
 
 # For Google
 PRIVATE_KEY='/path/to/private_key.json'
