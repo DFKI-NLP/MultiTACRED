@@ -2,7 +2,7 @@
 google-cloud-translate==2.0.1   # Translation with Google
 spacy==3.1.6                    # Tokenization
 trankit==1.1.1                  # Tokenization for more languages
-git+https://github.com/DFKI-NLP/sherlock.git@0.2.1#egg=sherlock     # Relation classification with AllenNLP/Transformers
+git+https://github.com/DFKI-NLP/sherlock@0.2.1#egg=sherlock     # Relation classification with AllenNLP/Transformers
 torch==1.10.2                   # Fix Torch version for Sherlock
 
 # --------- hydra --------- #

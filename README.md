@@ -28,7 +28,7 @@ MultiTACRED is tested with:
 
 ### From source
 ```bash
-git clone https://github.com/DFKI-NLP/MultiTACRED.git
+git clone https://github.com/DFKI-NLP/MultiTACRED
 cd MultiTACRED
 pip install .
 ```

@@ -21,7 +21,7 @@ setup(
         "spacy==3.1.6",
         "trankit==1.1.1",
         "torch==1.10.2",  # install with pip install . --extra-index-url https://download.pytorch.org/whl/cu113
-        "sherlock @ git+https://git@github.com/DFKI-NLP/sherlock.git@0.2.1#egg=sherlock",
+        "sherlock @ git+https://git@github.com/DFKI-NLP/sherlock@0.2.1#egg=sherlock",
         "pre-commit",  # hooks for applying linters on commit
         "black==22.6.0",  # to fix dependency conflicts
         "typer==0.4.2",  # to fix dependency conflicts
