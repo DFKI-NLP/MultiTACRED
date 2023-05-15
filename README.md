@@ -39,8 +39,7 @@ pip install .
 In order to run the translation scripts, we need to convert the files from the LDC-provided JSON format
 to a simpler JSONL format:
 ```bash
-cp *.json [/path/to/tacred/data/json] ./data/en/
-python src/translate/convert_to_jsonl.py --dataset_dir ./data/en --output_dir ./data/en
+python src/translate/convert_to_jsonl.py --dataset_dir [/path/to/tacred/data/json] --output_dir ./data/en
 ```
 
 ### Translation
