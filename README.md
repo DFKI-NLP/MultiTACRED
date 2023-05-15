@@ -206,22 +206,33 @@ data
 ```
 
 To reproduce our results, you should apply the [TACRED Revisited](https://github.com/DFKI-NLP/tacrev) patch to
-the TACRED json files. 
+the TACRED json files. We provide a slightly modified version of the original `apply_tacred_patch.py` script 
+to account for non-ascii characters (json dump with ensure_ascii=False) and the reduced amount of instances in 
+dev / test due to translation errors (remove an id check assertion).
+
 ```bash
 git clone https://github.com/DFKI-NLP/tacrev
 ```
 
-Then, for English, run:
+Then, for any language, run:
 ```bash
-python tacrev/scripts/apply_tacred_patch.py \
-  --dataset-file ./data/en/dev.json \
-  --patch-file tacrev/patch/dev_patch.json \
-  --output-file ./data/en/dev.json
+# Dev split
+python ./scripts/apply_tacrev_patch.py \
+  --dataset-file ./data/[lang]/dev_[lang].json \
+  --patch-file [path/to/tacrev/patch/dev_patch.json] \
+  --output-file ./data/[lang]/dev_[lang].json
+  
+# Test split
+python ./scripts/apply_tacrev_patch.py \
+  --dataset-file ./data/[lang]/test_[lang].json \
+  --patch-file [path/to/tacrev/patch/test_patch.json] \
+  --output-file ./data/[lang]/test_[lang].json
 
-python tacrev/scripts/apply_tacred_patch.py \
-  --dataset-file ./data/json/test.json \
-  --patch-file tacrev/patch/test_patch.json \
-  --output-file ./data/test.json
+# Backtranslated Test split
+python ./scripts/apply_tacrev_patch.py \
+  --dataset-file ./data/[lang]/test_en_[lang]_bt.json \
+  --patch-file [path/to/tacrev/patch/test_patch.json] \
+  --output-file ./data/[lang]/test_en_[lang]_bt.json
 ```
 
 ### Train and evaluate a single scenario
