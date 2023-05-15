@@ -120,6 +120,27 @@ API_ADDRESS="https://api.deepl.com/v2/translate"
 PRIVATE_KEY='/path/to/private_key.json'
 ```
 
+#### Tokenizer
+
+The argument `-T` or `--tokenizer` gives you a choice between which tokenizer
+you want to use to tokenize the raw translation text.
+
+- split (default): python whitespace tokenization
+- spacy [website](https://spacy.io/usage), the used language model will be downloaded automatically (currently, the statistical models, not the neural ones).
+- trankit [website](https://github.com/nlp-uoregon/trankit), the used neural model will be downloaded automatically. Requires a GPU to run at reasonable speed!
+
+You can add your own tokenizer by just adding the tokenizer name to
+`tokenizer_choices` and its initialization in the `init_tokenizer()` function of the
+[utils.py](src/translate/utils.py) script.
+
+#### Logging
+
+The scripts implement logging from the python standard library.
+- Set `-v` to display logging messages to the console
+- Set `--log_level [debug,info,warning,error,critical]` to determine which kind things should be logged.
+- Set `--log_file FILE` to log to a file.
+- Alternatively give a logger object as argument to the translate function.
+
 ### Backtranslation
 The script ['backtranslate.py'](backtranslate.py) translates a translated dataset back to its
 original language. The function accepts output.jsonl files in the format of the
@@ -151,34 +172,13 @@ you can call the script:
 python src/translate/convert_to_json.py --dataset_dir [/path/to/translated/jsonl] --output_dir [json-output-dir] --language [lang_code]
 ```
 
-### Scripts to wrap all this
+### Scripts to wrap Translation, Backtranslation and Conversion to JSON
 `scripts/translate_deepl.sh` and `scripts/translate_google.sh` wrap translation,
 backtranslation, and conversion to JSON for a single language. You do still need
 to do the one-time-only step of preparing the JSONL version of the original TACRED!
 
-### Tokenizer
 
-The argument `-T` or `--tokenizer` gives you a choice between which tokenizer
-you want to use to tokenize the raw translation text.
-
-- split (default): python whitespace tokenization
-- spacy [website](https://spacy.io/usage), the used language model will be downloaded automatically (currently, the statistical models, not the neural ones).
-- trankit [website](https://github.com/nlp-uoregon/trankit), the used neural model will be downloaded automatically. Requires a GPU to run at reasonable speed!
-
-You can add your own tokenizer by just adding the tokenizer name to
-`tokenizer_choices` and its initialization in the `init_tokenizer()` function of the
-[utils.py](src/translate/utils.py) script.
-
-### Logging
-
-The scripts implement logging from the python standard library.
-- Set `-v` to display logging messages to the console
-- Set `--log_level [debug,info,warning,error,critical]` to determine which kind things should be logged.
-- Set `--log_file FILE` to log to a file.
-- Alternatively give a logger object as argument to the translate function.
-
-
-## Experiments
+## Relation Extraction Experiments
 All experiments are configured with [Hydra](https://hydra.cc/). Experiment configs are
 stored in `config/`. 
 
@@ -206,19 +206,22 @@ data
 ```
 
 To reproduce our results, you should apply the [TACRED Revisited](https://github.com/DFKI-NLP/tacrev) patch to
-the English TACRED json files. Note that the translated data is already patched.
+the TACRED json files. 
 ```bash
 git clone https://github.com/DFKI-NLP/tacrev
+```
 
+Then, for English, run:
+```bash
 python tacrev/scripts/apply_tacred_patch.py \
-  --dataset-file TACRED/data/json/dev.json \
+  --dataset-file ./data/en/dev.json \
   --patch-file tacrev/patch/dev_patch.json \
-  --output-file MultiTACRED/data/dev.json
+  --output-file ./data/en/dev.json
 
 python tacrev/scripts/apply_tacred_patch.py \
-  --dataset-file TACRED/data/json/test.json \
+  --dataset-file ./data/json/test.json \
   --patch-file tacrev/patch/test_patch.json \
-  --output-file MultiTACRED/data/test.json
+  --output-file ./data/test.json
 ```
 
 ### Train and evaluate a single scenario
@@ -254,13 +257,15 @@ python src/evaluate/evaluate.py "run_id=range(1,6)" "scenario=glob(backtranslati
 ## 📚&nbsp; Citation
 Please consider citing the following paper when using MultiTACRED:
 ```
-@misc{hennig-etal-2023-multitacred,
-  author = {Leonhard Hennig, Philippe Thomas},
-  title = {MultiTACRED: A Multilingual Version of the TAC Relation Extraction Dataset.},
-  year = {2023},
-  publisher = {GitHub},
-  journal = {GitHub repository},
-  howpublished = {\url{https://github.com/DFKI-NLP/MultiTACRED}}
+@inproceedings{hennig-etal-2023-multitacred,
+    title = "MultiTACRED: A Multilingual Version of the TAC Relation Extraction Dataset",
+    author = "Hennig, Leonhard and Thomas, Philippe and Möller, Sebastian",
+    booktitle = "Proceedings of the 61st Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)",
+    month = jul,
+    year = "2023",
+    address = "Online and Toronto, Canada",
+    publisher = "Association for Computational Linguistics",
+    abstract = "Relation extraction (RE) is a fundamental task in information extraction, whose extension to multilingual settings has been hindered by the lack of supervised resources comparable in size to large English datasets such as TACRED (Zhang et al., 2017). To address this gap, we introduce the MultiTACRED dataset, covering 12 typologically diverse languages from 9 language families, which is created by machine-translating TACRED instances and automatically projecting their entity annotations. We analyze translation and annotation projection quality, identify error categories, and experimentally evaluate fine-tuned pretrained mono- and multilingual language models in common transfer learning scenarios. Our analyses show that machine translation is a viable strategy to transfer RE instances, with native speakers judging more than 84\% of the translated instances to be linguistically and semantically acceptable. We find monolingual RE model performance to be comparable to the English original for many of the target languages, and that multilingual models trained on a combination of English and target language data can outperform their monolingual counterparts. However, we also observe a variety of translation and annotation projection errors, both due to the MT systems and linguistic features of the target languages, such as pronoun-dropping, compounding and inflection, that degrade dataset quality and RE model performance.",
 }
 ```
 
