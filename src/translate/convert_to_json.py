@@ -23,14 +23,12 @@ from tqdm import tqdm
 
 
 class DatasetConverter:
-    def __init__(self, dataset_dir, output_dir, language):
+    def __init__(self, dataset_dir, output_dir, language=None):
 
-        self.input_train_file = os.path.join(dataset_dir, f"tacred_train_{language}.jsonl")
-        self.input_test_file = os.path.join(dataset_dir, f"tacred_test_{language}.jsonl")
-        self.input_dev_file = os.path.join(dataset_dir, f"tacred_dev_{language}.jsonl")
-        self.input_backtranslation_file = os.path.join(
-            dataset_dir, f"tacred_test_en_{language}_bt.jsonl"
-        )
+        self.input_train_file = os.path.join(dataset_dir, "train.json" if language is None else  f"train_{language}.jsonl")
+        self.input_test_file = os.path.join(dataset_dir, "test.json" if language is None else f"test_{language}.jsonl")
+        self.input_dev_file = os.path.join(dataset_dir, "dev.json" if language is None else f"dev_{language}.jsonl")
+        self.input_backtranslation_file = os.path.join(dataset_dir, f"test_en_{language}_bt.jsonl")
 
         self.output_dir = output_dir
 
@@ -76,7 +74,7 @@ class DatasetConverter:
             )
 
     def _convert_tacred_format_file(self, input_file, output_file, is_backtranslation=False):
-        with open(output_file, "w") as output_file:
+        with open(output_file, "w", encoding="utf-8") as output_file:
             data = []
             for example in self._read_jsonl_file(
                 input_file, is_backtranslation=is_backtranslation
@@ -85,7 +83,7 @@ class DatasetConverter:
             output_file.write(json.dumps(data, ensure_ascii=False))
 
     def _read_jsonl_file(self, input_file, is_backtranslation=False):
-        with open(input_file, "r") as input_file:
+        with open(input_file, "r", encoding="utf-8") as input_file:
             for line in tqdm(input_file):
                 input_example = json.loads(line)
                 key_suffix = "translated" if not is_backtranslation else "backtranslated"

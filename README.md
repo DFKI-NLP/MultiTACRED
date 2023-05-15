@@ -1,7 +1,7 @@
 # MultiTACRED: A Multilingual Version of the TAC Relation Extraction Dataset
 
 This repository contains the code of our paper:
-[MultiTACRED: A Multilingual Version of the TAC Relation Extraction Dataset.](https://arxiv.org/todo)
+[MultiTACRED: A Multilingual Version of the TAC Relation Extraction Dataset.](https://arxiv.org/abs/2305.04582)
 Leonhard Hennig, Philippe Thomas, Sebastian Möller
 
 We machine-translate the TAC relation extraction dataset [1] to 12 typologically diverse languages from
