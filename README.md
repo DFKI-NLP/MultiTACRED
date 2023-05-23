@@ -8,6 +8,10 @@ We machine-translate the TAC relation extraction dataset [1] to 12 typologically
 different language families, analyze translation and annotation projection quality, and evaluate
 fine-tuned mono- and multilingual PLMs in common transfer learning scenarios.
 
+- **HF dataset reader**: https://huggingface.co/datasets/DFKI-SLT/multitacred
+- **Papers With Code**: https://paperswithcode.com/dataset/multitacred
+
+
 # Installation
 
 ---
