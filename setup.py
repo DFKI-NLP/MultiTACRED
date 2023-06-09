@@ -3,8 +3,8 @@ from io import open
 from setuptools import find_packages, setup
 
 setup(
-    name="multi-tacred",
-    version="0.0.1",
+    name="multitacred",
+    version="0.1.0",
     author="Leonhard Hennig, Gabriel Kressin, Phuc Tran Truong",
     author_email="firstname.lastname@dfki.de",
     description="MultiTACRED - A Multilingual Version of the TAC Relation Extraction Dataset",
@@ -15,16 +15,16 @@ setup(
     url="https://github.com/DFKI-NLP/MultiTACRED",
     packages=find_packages(exclude=["*.tests", "*.tests.*", "tests.*", "tests"]),
     install_requires=[
-        "hydra-core==1.2.0",
+        "hydra-core>=1.2.0",
         "google-cloud-translate==2.0.1",
         "python-dotenv>=0.20.0",
-        "spacy==3.1.6",
-        "trankit==1.1.1",
-        "torch==1.10.2",  # install with pip install . --extra-index-url https://download.pytorch.org/whl/cu113
-        "sherlock @ git+https://git@github.com/DFKI-NLP/sherlock@0.2.1#egg=sherlock",
+        "spacy",
+        "trankit>=1.1.1",
+        "torch",
+        "sherlock @ git+https://git@github.com/DFKI-NLP/sherlock@update-reqs#egg=sherlock",
         "pre-commit",  # hooks for applying linters on commit
-        "black==22.6.0",  # to fix dependency conflicts
-        "typer==0.4.2",  # to fix dependency conflicts
+        "black>=22.6.0",
+        "typer>=0.4.2",
     ],
     tests_require=["flake8"],
     entry_points={"console_scripts": []},
