@@ -21,7 +21,7 @@ setup(
         "spacy",
         "trankit>=1.1.1",
         "transformers[ja]",
-        "sherlock @ git+https://git@github.com/DFKI-NLP/sherlock@update-reqs#egg=sherlock",
+        "sherlock @ git+https://git@github.com/DFKI-NLP/sherlock@0.2.2#egg=sherlock",
         "pre-commit",  # hooks for applying linters on commit
         "black>=22.6.0",
         "typer>=0.4.2",

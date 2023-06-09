@@ -2,7 +2,7 @@
 google-cloud-translate==2.0.1   # Translation with Google
 spacy                    	# Tokenization
 trankit>=1.1.1           	# Tokenization for more languages
-git+https://github.com/DFKI-NLP/sherlock@update-reqs#egg=sherlock     # Relation classification with AllenNLP/Transformers
+git+https://github.com/DFKI-NLP/sherlock@0.2.2#egg=sherlock     # Relation classification with AllenNLP/Transformers
 transformers[ja]        	# Transformers support for Japanese
 
 # --------- hydra --------- #
