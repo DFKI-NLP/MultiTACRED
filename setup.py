@@ -20,7 +20,7 @@ setup(
         "python-dotenv>=0.20.0",
         "spacy",
         "trankit>=1.1.1",
-        "torch",
+        "transformers[ja]",
         "sherlock @ git+https://git@github.com/DFKI-NLP/sherlock@update-reqs#egg=sherlock",
         "pre-commit",  # hooks for applying linters on commit
         "black>=22.6.0",
