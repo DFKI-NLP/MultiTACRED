@@ -23,10 +23,10 @@ fine-tuned mono- and multilingual PLMs in common transfer learning scenarios.
 
 MultiTACRED is tested with:
 
-- Python 3.8
-- Torch 1.10.2
-- AllenNLP 2.8.0
-- Transformers 4.12.5
+- Python >= 3.8
+- Torch >= 1.10.2; <= 1.12.1
+- AllenNLP >= 2.8.0; <= 2.10.1
+- Transformers >= 4.12.5; <= 4.20.1
 
 ## 🚀&nbsp; Installation
 
