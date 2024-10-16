@@ -10,6 +10,11 @@ fine-tuned mono- and multilingual PLMs in common transfer learning scenarios.
 
 - **HF dataset reader**: https://huggingface.co/datasets/DFKI-SLT/multitacred
 - **Papers With Code**: https://paperswithcode.com/dataset/multitacred
+- **LDC**: https://catalog.ldc.upenn.edu/LDC2024T09
+
+# Access
+
+To respect the copyright of the underlying TACRED and KBP corpora, MultiTACRED is released via the Linguistic Data Consortium (LDC). Therefore, you can download MultiTACRED from the [LDC MultiTACRED webpage](https://catalog.ldc.upenn.edu/LDC2024T09). If you are an LDC member, the access will be free; otherwise, an access fee of $25 is needed.
 
 
 # Installation
